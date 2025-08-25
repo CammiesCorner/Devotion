@@ -1,0 +1,78 @@
+[versions]
+minecraft = "1.21.1"
+
+# https://parchmentmc.org/docs/getting-started
+parchment_minecraft = "1.21.1"
+parchment_mappings = "2024.11.17"
+
+# https://projects.neoforged.net/neoforged/moddevgradle
+moddevgradle = "2.0.80"
+# https://projects.neoforged.net/neoforged/neoform
+neoform = "1.21.1-20240808.144430"
+
+# NeoForge
+# The latest versions are available at https://projects.neoforged.net/neoforged/neoforge
+neoforge = "21.1.151"
+
+# Fabric
+# The latest versions are available at https://fabricmc.net/develop
+fabric_loom = "1.10.5" # https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin
+fabric_loader = "0.16.13"
+fabric_api = "0.115.4+1.21.1"
+
+# Minecraft dependencies
+jetbrains_annotations = "26.0.2"
+mixin = "0.15.5+mixin.0.8.7"
+mixin_extras = "0.4.1"
+asm = "9.7.1"
+
+# Other dependencies
+autoservice = "1.1.1" # https://mvnrepository.com/artifact/com.google.auto.service/auto-service
+emi = "1.1.22+1.21.1" # https://www.curseforge.com/minecraft/mc-mods/emi/files/all
+modmenu = "11.0.3" # https://modrinth.com/mod/modmenu/versions
+resourcefulconfig = "3.0.10" # https://beehive.sh/mod/resourcefulconfig/versions
+sparkweave = "0.508.2" # https://www.curseforge.com/minecraft/mc-mods/sparkweave/files/all
+
+[libraries]
+# NeoForge
+
+# Fabric
+fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
+fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
+
+# Minecraft Dependencies
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+mixin = { module = "net.fabricmc:sponge-mixin", version.ref = "mixin" }
+mixin_extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin_extras" }
+asm = { module = "org.ow2.asm:asm", version.ref = "asm" }
+asm_analysis = { module = "org.ow2.asm:asm-analysis", version.ref = "asm" }
+asm_commons = { module = "org.ow2.asm:asm-commons", version.ref = "asm" }
+asm_tree = { module = "org.ow2.asm:asm-tree", version.ref = "asm" }
+asm_util = { module = "org.ow2.asm:asm-util", version.ref = "asm" }
+jetbrains_annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains_annotations" }
+
+# Other dependencies
+autoservice = { module = "com.google.auto.service:auto-service", version.ref = "autoservice" }
+autoservice_annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoservice" }
+
+emi = { module = "dev.emi:emi-xplat-mojmap", version.ref = "emi" }
+emi_fabric = { module = "dev.emi:emi-fabric", version.ref = "emi" }
+emi_neoforge = { module = "dev.emi:emi-neoforge", version.ref = "emi" }
+
+resourcefulconfig = { module = "com.teamresourceful.resourcefulconfig:resourcefulconfig-common-1.21", version.ref = "resourcefulconfig" }
+resourcefulconfig_fabric = { module = "com.teamresourceful.resourcefulconfig:resourcefulconfig-fabric-1.21", version.ref = "resourcefulconfig" }
+resourcefulconfig_neoforge = { module = "com.teamresourceful.resourcefulconfig:resourcefulconfig-neoforge-1.21", version.ref = "resourcefulconfig" }
+
+sparkweave = { module = "dev.upcraft.sparkweave:Sparkweave-Common", version.ref = "sparkweave" }
+sparkweave_fabric = { module = "dev.upcraft.sparkweave:Sparkweave-Fabric", version.ref = "sparkweave" }
+sparkweave_neoforge = { module = "dev.upcraft.sparkweave:Sparkweave-NeoForge", version.ref = "sparkweave" }
+
+modmenu_fabric = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
+
+[bundles]
+mixin = ["mixin", "mixin_extras", "asm", "asm_analysis", "asm_commons", "asm_tree", "asm_util"]
+
+[plugins]
+moddevgradle = { id = "net.neoforged.moddev", version.ref = "moddevgradle" }
+repositories = { id = "net.neoforged.moddev.repositories", version.ref = "moddevgradle" }
+fabric_loom = { id = "fabric-loom", version.ref = "fabric_loom" }

@@ -1,0 +1,38 @@
+plugins {
+	alias libs.plugins.moddevgradle
+}
+
+neoForge.neoFormVersion = libs.versions.neoform.get()
+
+// for repositories see settings.gradle -> dependencyResolutionManagement.repositories section
+// DO NOT add a repositories block in here
+dependencies {
+	compileOnly libs.bundles.mixin
+	compileOnly libs.jetbrains.annotations
+	compileOnly libs.autoservice.annotations
+
+	compileOnly libs.sparkweave
+	compileOnly libs.resourcefulconfig
+
+	compileOnly variantOf(libs.emi) { classifier 'api' }
+}
+
+neoForge {
+	parchment {
+		minecraftVersion = libs.versions.parchment.minecraft.get()
+		mappingsVersion = libs.versions.parchment.mappings.get()
+	}
+
+	accessTransformers {
+		def atFile = file("src/main/resources/META-INF/accesstransformer.cfg")
+		from atFile
+		publish atFile
+	}
+	validateAccessTransformers.set(true)
+
+	interfaceInjectionData {
+		def itfFile = file("interfaces.json")
+		from itfFile
+		publish itfFile
+	}
+}
